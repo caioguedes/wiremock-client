@@ -4,6 +4,7 @@
   "description": "A node client for interfacing with WireMock's admin API",
   "main": "index.js",
   "scripts": {
+    "coverage": "nyc report --reporter=text-lcov",
     "lint": "standard --fix",
     "pretest": "del .nyc_output && del coverage",
     "test": "nyc jasmine --config=jasmine.json",
@@ -12,6 +13,7 @@
   "author": "Alex Brown <alexmb522@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "coveralls": "^3.0.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },
@@ -30,6 +32,8 @@
     ]
   },
   "standard": {
-    "env": [ "jasmine" ]
+    "env": [
+      "jasmine"
+    ]
   }
 }
