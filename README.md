@@ -16,7 +16,8 @@ const {
   containsPattern,
   post,
   urlPathMatching,
-  WireMock
+  WireMock,
+  equalTo
 } = require('wiremock-client')
 
 const wireMock = new WireMock('localhost', 8080)
@@ -26,7 +27,7 @@ wireMock.resetMappings().then(() => wireMock.register(
        .willReturn(
          aResponse()
            .withStatus(200)
-           .withHeader('Content-Type', 'application/json')
+           .withHeader('Content-Type', equalTo('application/json'))
            .withBody({test: true})
        )
    )
