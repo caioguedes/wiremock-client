@@ -15,6 +15,9 @@ module.exports = class HttpAdminInterface {
   }
 
   resetMappings () {
-    return rp.post(`${this.uri}/mappings/reset`)
+    return rp({
+      method: 'POST',
+      url: `${this.uri}/mappings/reset`
+    })
   }
 }
