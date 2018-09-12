@@ -8,14 +8,23 @@ module.exports = class MappingBuilder {
     this.bodyPatterns = []
   }
 
+  atPriority (priority) {
+    this.priority = priority
+    return this
+  }
+
   build () {
-    // request
     const mapping = {
       request: {
         method: this.method
       }
     }
 
+    if (this.priority) {
+      mapping.priority = this.priority
+    }
+
+    // request
     mapping.request[this.url.key] = this.url.value
 
     if (this.headers.length > 0) {

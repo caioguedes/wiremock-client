@@ -28,5 +28,8 @@
     "reporter": [
       "lcov"
     ]
+  },
+  "standard": {
+    "env": [ "jasmine" ]
   }
 }

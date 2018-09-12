@@ -4,6 +4,8 @@ node_js:
 branches:
   only:
   - master
+before_script:
+  - npm run lint
 after_success:
   - npm version 1.0.${TRAVIS_BUILD_NUMBER}
 deploy:
