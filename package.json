@@ -1,6 +1,6 @@
 {
   "name": "wiremock-client",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "A node client for interfacing with WireMock's admin API",
   "main": "index.js",
   "scripts": {
