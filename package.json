@@ -4,7 +4,7 @@
   "description": "A node client for interfacing with WireMock's admin API",
   "main": "index.js",
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard --fix",
     "pretest": "del .nyc_output && del coverage",
     "test": "nyc jasmine --config=jasmine.json",
