@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard --fix",
-    "test": "jasmine --config=jasmine.json"
+    "pretest": "del .nyc_output && del coverage",
+    "test": "nyc jasmine --config=jasmine.json",
+    "posttest": "nyc report"
   },
   "author": "Alex Brown <alexmb522@gmail.com>",
   "license": "MIT",
@@ -14,7 +16,17 @@
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
+    "del-cli": "^1.1.0",
     "jasmine": "^3.2.0",
+    "nyc": "^13.0.1",
     "standard": "^12.0.1"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ],
+    "reporter": [
+      "lcov"
+    ]
   }
 }
