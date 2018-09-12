@@ -3,7 +3,7 @@
 A node client for interfacing with WireMock's admin API
 
 ### Example
-```$js
+```javascript
 const {
   aResponse,
   containsPattern,

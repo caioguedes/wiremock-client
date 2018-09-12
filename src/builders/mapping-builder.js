@@ -1,5 +1,4 @@
 module.exports = class MappingBuilder {
-
   constructor (method, url) {
     this.method = method
     this.url = url
@@ -67,5 +66,4 @@ module.exports = class MappingBuilder {
     this.response = responseBuilder
     return this
   }
-
 }

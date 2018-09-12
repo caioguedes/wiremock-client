@@ -1,27 +1,26 @@
 module.exports = class ResponseBuilder {
-
   constructor () {
     this.headers = {}
   }
 
-  withStatus(status) {
+  withStatus (status) {
     this.status = status
     return this
   }
 
-  withHeader(key, value) {
+  withHeader (key, value) {
     this.headers[key] = value
     return this
   }
 
-  withBody(body) {
+  withBody (body) {
     this.body = typeof body === 'string' ? body : JSON.stringify(body)
     return this
   }
 
   build () {
     const response = {
-      status: this.status,
+      status: this.status
 
     }
 
@@ -35,5 +34,4 @@ module.exports = class ResponseBuilder {
 
     return response
   }
-
 }

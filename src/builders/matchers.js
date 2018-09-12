@@ -1,6 +1,6 @@
 module.exports = {
 
-  containsPattern(pattern) {
+  containsPattern (pattern) {
     return {
       contains: pattern
     }
@@ -9,29 +9,29 @@ module.exports = {
   /*
    * URL
    */
-  urlMatching(url) {
-    return  {
+  urlMatching (url) {
+    return {
       key: 'url',
       value: url
     }
   },
 
-  urlPattern(pattern) {
-    return  {
+  urlPattern (pattern) {
+    return {
       key: 'urlPattern',
       value: pattern
     }
   },
 
-  urlPathMatching(path) {
-    return  {
+  urlPathMatching (path) {
+    return {
       key: 'urlPath',
       value: path
     }
   },
 
-  urlPathPattern(pattern) {
-    return  {
+  urlPathPattern (pattern) {
+    return {
       key: 'urlPathPattern',
       value: pattern
     }

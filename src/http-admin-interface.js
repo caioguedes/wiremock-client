@@ -1,7 +1,6 @@
 const rp = require('request-promise')
 
 module.exports = class HttpAdminInterface {
-
   constructor (host, port) {
     this.uri = `http://${host}:${port}/__admin`
   }
@@ -18,6 +17,4 @@ module.exports = class HttpAdminInterface {
   resetMappings () {
     return rp.post(`${this.uri}/mappings/reset`)
   }
-
-
 }
