@@ -6,6 +6,12 @@ module.exports = {
     }
   },
 
+  equalTo (value) {
+    return {
+      equalTo: value
+    }
+  },
+
   /*
    * URL
    */

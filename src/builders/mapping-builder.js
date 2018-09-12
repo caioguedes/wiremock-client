@@ -27,15 +27,15 @@ module.exports = class MappingBuilder {
     // request
     mapping.request[this.url.key] = this.url.value
 
-    if (this.headers.length > 0) {
+    if (Object.keys(this.headers).length > 0) {
       mapping.request.headers = this.headers
     }
 
-    if (this.cookies.length > 0) {
+    if (Object.keys(this.cookies).length > 0) {
       mapping.request.cookies = this.cookies
     }
 
-    if (this.queryParameters.length > 0) {
+    if (Object.keys(this.queryParameters).length > 0) {
       mapping.request.queryParameters = this.queryParameters
     }
 
