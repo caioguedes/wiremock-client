@@ -11,14 +11,13 @@ describe('WireMock', () => {
     adminSpy = jasmine.createSpyObj('admin', ['createMapping', 'resetMappings'])
     adminConstructorSpy.and.returnValue(adminSpy)
 
-    WireMock = rewire("./wire-mock.js");
+    WireMock = rewire('./wire-mock.js')
     WireMock.__set__({
       HttpAdminInterface: adminConstructorSpy
     })
   })
 
   describe('constructor', () => {
-
     it('should create admin interface with default host and port when neither is provided', () => {
       const wireMock = new WireMock()
       expect(adminConstructorSpy).toHaveBeenCalledWith('localhost', 8080)
@@ -39,14 +38,13 @@ describe('WireMock', () => {
       expect(adminConstructorSpy).toHaveBeenCalledWith(host, port)
       expect(wireMock.admin).toEqual(adminSpy)
     })
-
   })
 
   describe('methods', () => {
     let wireMock
 
     beforeEach(() => {
-      wireMock = new WireMock();
+      wireMock = new WireMock()
     })
 
     it('should have a method for registering mappings', () => {
@@ -62,6 +60,5 @@ describe('WireMock', () => {
       wireMock.resetMappings()
       expect(adminSpy.resetMappings).toHaveBeenCalledWith()
     })
-
   })
 })

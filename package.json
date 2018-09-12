@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "standard --fix",
+    "lint": "standard",
     "pretest": "del .nyc_output && del coverage",
     "test": "nyc jasmine --config=jasmine.json",
     "posttest": "nyc report"
