@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/wiremock-client.svg)](https://badge.fury.io/js/wiremock-client)
 [![Build Status](https://travis-ci.org/alexmbrown/wiremock-client.svg?branch=master)](https://travis-ci.org/alexmbrown/wiremock-client)
-[![Coverage Status](https://coveralls.io/repos/github/alexmbrown/wiremock-client/badge.svg)](https://coveralls.io/github/alexmbrown/wiremock-client)
+[![Coverage Status](https://coveralls.io/repos/github/alexmbrown/wiremock-client/badge.svg?branch=master)](https://coveralls.io/github/alexmbrown/wiremock-client?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ed209ea9824605912120/maintainability)](https://codeclimate.com/github/alexmbrown/wiremock-client/maintainability)
 
 A node client for interfacing with WireMock's admin API
