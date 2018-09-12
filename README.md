@@ -2,6 +2,8 @@
 
 A node client for interfacing with WireMock's admin API
 
+**WARNING: THIS LIBRARY CURRENTLY EXPERIMENTAL AND IN A PRE-ALPHA STATE**
+
 ### Example
 ```javascript
 const {
