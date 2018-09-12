@@ -1,0 +1,15 @@
+{
+  "name": "wiremock-client",
+  "version": "1.0.0",
+  "description": "A node client for interfacing with WireMock's admin API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Brown <alexmb522@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
