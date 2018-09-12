@@ -1,5 +1,7 @@
 # WireMock Client
 
+[![Coverage Status](https://coveralls.io/repos/github/alexmbrown/wiremock-client/badge.svg)](https://coveralls.io/github/alexmbrown/wiremock-client)
+
 A node client for interfacing with WireMock's admin API
 
 **WARNING: THIS LIBRARY CURRENTLY EXPERIMENTAL AND IN A PRE-ALPHA STATE**
