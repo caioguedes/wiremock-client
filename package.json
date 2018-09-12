@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine --config=jasmine.json"
   },
   "author": "Alex Brown <alexmb522@gmail.com>",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
+    "jasmine": "^3.2.0",
     "standard": "^12.0.1"
   }
 }
