@@ -6,6 +6,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard",
+    "lint:fix": "standard --fix",
     "pretest": "del .nyc_output && del coverage",
     "test": "nyc jasmine --config=jasmine.json",
     "posttest": "nyc report"

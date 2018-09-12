@@ -1,7 +1,6 @@
 const rewire = require('rewire')
 
 describe('HttpAdminInterface', () => {
-
   let HttpAdminInterface
   let rpSpy
 
@@ -14,16 +13,13 @@ describe('HttpAdminInterface', () => {
   })
 
   describe('constructor', () => {
-
     it('should build a uri from the hostname and port', () => {
       const admin = new HttpAdminInterface('localhost', 8080)
       expect(admin.uri).toEqual('http://localhost:8080/__admin')
     })
-
   })
 
   describe('methods', () => {
-
     let admin
 
     beforeEach(() => {
@@ -31,7 +27,7 @@ describe('HttpAdminInterface', () => {
     })
 
     it('should have a method for creating mappings', () => {
-      const mapping = {test: 'mapping'}
+      const mapping = { test: 'mapping' }
       admin.createMapping(mapping)
       expect(rpSpy).toHaveBeenCalledWith({
         method: 'POST',
@@ -49,5 +45,4 @@ describe('HttpAdminInterface', () => {
       })
     })
   })
-
 })
