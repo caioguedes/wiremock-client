@@ -21,14 +21,13 @@ module.exports = class ResponseBuilder {
   build () {
     const response = {
       status: this.status
-
     }
 
     if (this.body) {
       response.body = this.body
     }
 
-    if (this.headers.length > 0) {
+    if (Object.keys(this.headers).length > 0) {
       response.headers = this.headers
     }
 
