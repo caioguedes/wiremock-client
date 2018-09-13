@@ -1,7 +1,6 @@
 const ResponseBuilder = require('./response-builder')
 
 describe('ResponseBuilder', () => {
-
   let builder
 
   beforeEach(() => {
@@ -31,13 +30,12 @@ describe('ResponseBuilder', () => {
     expect(builder.withBody(body) instanceof ResponseBuilder).toBeTruthy()
     expect(builder.body).toEqual(body)
 
-    body = {test: true}
+    body = { test: true }
     expect(builder.withBody(body) instanceof ResponseBuilder).toBeTruthy()
     expect(builder.body).toEqual(JSON.stringify(body))
   })
 
   describe('build()', () => {
-
     it('should set the status', () => {
       builder.withStatus(123)
       expect(builder.build()).toEqual({
@@ -64,7 +62,5 @@ describe('ResponseBuilder', () => {
         }
       })
     })
-
   })
-
 })

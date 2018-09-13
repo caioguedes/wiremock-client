@@ -1,7 +1,6 @@
 const MappingBuilder = require('./mapping-builder')
 
 describe('MappingBuilder', () => {
-
   it('should have a method for constructing the builder', () => {
     const method = 'method'
     const url = 'url'
@@ -66,13 +65,12 @@ describe('MappingBuilder', () => {
   })
 
   describe('build()', () => {
-
     let builder
 
     beforeEach(() => {
       builder = new MappingBuilder('method', {
         key: 'urlKey',
-        value: 'urlValue',
+        value: 'urlValue'
       })
     })
 
@@ -109,7 +107,5 @@ describe('MappingBuilder', () => {
       responseSpy.build.and.returnValue('response')
       expect(builder.willReturn(responseSpy).build().response).toEqual('response')
     })
-
   })
-
 })

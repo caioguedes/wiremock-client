@@ -1,7 +1,6 @@
 const Matchers = require('./matchers')
 
 describe('Matchers', () => {
-
   it('containsPattern()', () => {
     const pattern = 'pattern'
     expect(Matchers.containsPattern(pattern)).toEqual({
@@ -10,7 +9,6 @@ describe('Matchers', () => {
   })
 
   describe('url matchers', () => {
-
     it('urlMatching()', () => {
       const url = 'url'
       expect(Matchers.urlMatching(url)).toEqual({
@@ -42,7 +40,5 @@ describe('Matchers', () => {
         value: url
       })
     })
-
   })
-
 })
