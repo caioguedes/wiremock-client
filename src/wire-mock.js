@@ -1,4 +1,5 @@
 const HttpAdminInterface = require('./http-admin-interface')
+const MappingBuilder = require('./builders/mapping-builder')
 
 const DEFAULT_PORT = 8080
 const DEFAULT_HOST = 'localhost'
@@ -9,7 +10,10 @@ module.exports = class WireMock {
   }
 
   register (builder) {
-    return this.admin.createMapping(builder.build())
+    if (builder instanceof MappingBuilder) {
+      return this.admin.createMapping(builder.build())
+    }
+    return this.admin.createMapping(builder)
   }
 
   resetMappings () {
