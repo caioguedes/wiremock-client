@@ -35,3 +35,91 @@ wireMock.resetMappings().then(() => wireMock.register(
 
 
 ```
+
+## Features
+
+### Matchers
+
+#### Url Matchers
+
+These matchers are used for matching request urls
+
+##### Url Matching
+```
+urlMatching (url)
+```
+---
+
+urlPattern (pattern)
+
+---
+
+urlPathMatching (path)
+
+---
+```
+urlPathPattern (pattern)
+```
+---
+
+#### Global Matchers
+
+containsPattern(pattern)
+equalTo(value)
+
+### Mappings
+Stub mappings
+
+
+Get all stub mapping
+ 
+```
+wireMock.getStubMapping(uuid) 
+```
+---
+Create new stub mapping
+ 
+```
+wireMock.register(mappingBuilder|mapping)
+```
+---
+Delete all mapping
+ 
+```
+wireMock.removeMappings()
+```
+---
+Delete all mapping
+ 
+```
+wireMock.removeMappings()
+```
+---
+Reset stub mappings 
+
+---
+Get a single stub mapping
+
+---
+Delete a stub mapping
+
+---
+Save all persistent stub mappings to the backing store
+
+---
+Find stubs by matching on their metadata
+
+---
+Remove stubs by matching on their metadata
+
+---
+
+
+### Requests
+### Recordings
+### scenarios
+### Near Misses
+### Settings
+### Shutdown
+
+

@@ -1,1 +1,1 @@
-module.exports = require('../matchers/matchers')
+module.exports = require('./matchers')
