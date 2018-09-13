@@ -8,6 +8,13 @@ describe('Matchers', () => {
     })
   })
 
+  it('equalTo()', () => {
+    const value = 'value'
+    expect(Matchers.equalTo(value)).toEqual({
+      equalTo: value
+    })
+  })
+
   describe('url matchers', () => {
     it('urlMatching()', () => {
       const url = 'url'
