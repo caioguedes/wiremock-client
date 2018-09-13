@@ -9,6 +9,10 @@ module.exports = class WireMock {
     this.admin = new HttpAdminInterface(host || DEFAULT_HOST, port || DEFAULT_PORT)
   }
 
+  /*
+   * MAPPINGS
+   */
+  // POST /mapping
   register (builder) {
     if (builder instanceof MappingBuilder) {
       return this.admin.createMapping(builder.build())
@@ -16,6 +20,7 @@ module.exports = class WireMock {
     return this.admin.createMapping(builder)
   }
 
+  // POST /mapping/reset
   resetMappings () {
     return this.admin.resetMappings()
   }
