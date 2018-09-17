@@ -20,7 +20,7 @@ describe('MappingBuilder', () => {
     expect(builder.priority).toEqual(priority)
   })
 
-  it('should have a method for setting a header', () => {
+  it('should have a method for adding a header matcher', () => {
     const key = 'key'
     const value = 'value'
     const builder = new MappingBuilder()
@@ -30,7 +30,7 @@ describe('MappingBuilder', () => {
     })
   })
 
-  it('should have a method for setting a cookie', () => {
+  it('should have a method for adding a cookie matcher', () => {
     const key = 'key'
     const value = 'value'
     const builder = new MappingBuilder()
@@ -40,7 +40,7 @@ describe('MappingBuilder', () => {
     })
   })
 
-  it('should have a method for setting a query params', () => {
+  it('should have a method for adding a query parameter matcher', () => {
     const key = 'key'
     const value = 'value'
     const builder = new MappingBuilder()
@@ -50,14 +50,14 @@ describe('MappingBuilder', () => {
     })
   })
 
-  it('should have a method for setting a request body matchers', () => {
+  it('should have a method for adding a request body matchers', () => {
     const bodyPattern = 'bodyPattern'
     const builder = new MappingBuilder()
     expect(builder.withRequestBody(bodyPattern) instanceof MappingBuilder).toBeTruthy()
     expect(builder.bodyPatterns).toEqual([bodyPattern])
   })
 
-  it('should have a method for attaching a response builder', () => {
+  it('should have a method for attaching a response matcher builder', () => {
     const responseBuilder = 'responseBuilder'
     const builder = new MappingBuilder()
     expect(builder.willReturn(responseBuilder) instanceof MappingBuilder).toBeTruthy()
@@ -68,10 +68,7 @@ describe('MappingBuilder', () => {
     let builder
 
     beforeEach(() => {
-      builder = new MappingBuilder('method', {
-        key: 'urlKey',
-        value: 'urlValue'
-      })
+      builder = new MappingBuilder('method', { url: 'urlPattern' })
     })
 
     it('should set the method', () => {
@@ -79,7 +76,7 @@ describe('MappingBuilder', () => {
     })
 
     it('should set the url', () => {
-      expect(builder.build().request.urlKey).toEqual('urlValue')
+      expect(builder.build().request.url).toEqual('urlPattern')
     })
 
     it('should set priority', () => {

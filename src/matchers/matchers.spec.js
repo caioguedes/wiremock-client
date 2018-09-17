@@ -1,51 +1,82 @@
 const Matchers = require('./matchers')
 
 describe('Matchers', () => {
+  it('absent()', () => {
+    const absent = 'absent'
+    expect(Matchers.absent(absent)).toEqual({absent})
+  })
+
   it('containsPattern()', () => {
-    const pattern = 'pattern'
-    expect(Matchers.containsPattern(pattern)).toEqual({
-      contains: pattern
-    })
+    const binaryEqualTo = 'binaryEqualTo'
+    expect(Matchers.binaryEqualTo(binaryEqualTo)).toEqual({binaryEqualTo})
+  })
+
+  it('containsPattern()', () => {
+    const contains = 'contains'
+    expect(Matchers.containing(contains)).toEqual({contains})
   })
 
   it('equalTo()', () => {
-    const value = 'value'
-    expect(Matchers.equalTo(value)).toEqual({
-      equalTo: value
+    const equalTo = 'equalTo'
+    expect(Matchers.equalTo(equalTo)).toEqual({equalTo})
+  })
+
+  it('equalToIgnoreCase()', () => {
+    const equalTo = 'equalToIgnoreCase'
+    expect(Matchers.equalToIgnoreCase(equalTo)).toEqual({
+      equalTo,
+      caseInsensitive: true
     })
   })
 
-  describe('url matchers', () => {
-    it('urlMatching()', () => {
-      const url = 'url'
-      expect(Matchers.urlMatching(url)).toEqual({
-        key: 'url',
-        value: url
+  describe('equalToJson', () => {
+
+    it('equalToJson() no options', () => {
+      const equalToJson = 'equalToJson'
+      expect(Matchers.equalToJson(equalToJson)).toEqual({
+        equalToJson
       })
     })
 
-    it('urlPattern()', () => {
-      const url = 'urlPattern'
-      expect(Matchers.urlPattern(url)).toEqual({
-        key: 'urlPattern',
-        value: url
+    it('equalToJson() with ignoreArrayOrder option', () => {
+      const equalToJson = 'equalToJson'
+      expect(Matchers.equalToJson(equalToJson, true)).toEqual({
+        equalToJson,
+        ignoreArrayOrder: true
       })
     })
 
-    it('urlPathMatching()', () => {
-      const url = 'urlPathMatching'
-      expect(Matchers.urlPathMatching(url)).toEqual({
-        key: 'urlPath',
-        value: url
+    it('equalToJson() with ignoreExtraElements option', () => {
+      const equalToJson = 'equalToJson'
+      expect(Matchers.equalToJson(equalToJson, false, true)).toEqual({
+        equalToJson,
+        ignoreExtraElements: true
       })
     })
+  })
 
-    it('urlPathMatching()', () => {
-      const url = 'urlPathPattern'
-      expect(Matchers.urlPathPattern(url)).toEqual({
-        key: 'urlPathPattern',
-        value: url
-      })
-    })
+  it('equalToXml()', () => {
+    const equalToXml = 'equalToXml'
+    expect(Matchers.equalToXml(equalToXml)).toEqual({equalToXml})
+  })
+
+  it('matchesJsonPath()', () => {
+    const matchesJsonPath = 'matchesJsonPath'
+    expect(Matchers.matchesJsonPath(matchesJsonPath)).toEqual({matchesJsonPath})
+  })
+
+  it('matchingXPath()', () => {
+    const matchingXPath = 'matchingXPath'
+    expect(Matchers.matchingXPath(matchingXPath)).toEqual({matchingXPath})
+  })
+
+  it('matches()', () => {
+    const matches = 'matches'
+    expect(Matchers.matches(matches)).toEqual({matches})
+  })
+
+  it('notMatching()', () => {
+    const doesNotMatch = 'equalToXml'
+    expect(Matchers.notMatching(doesNotMatch)).toEqual({doesNotMatch})
   })
 })

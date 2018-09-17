@@ -25,7 +25,7 @@ module.exports = class MappingBuilder {
     }
 
     // request
-    mapping.request[this.url.key] = this.url.value
+    Object.assign(mapping.request, this.url)
 
     if (Object.keys(this.headers).length > 0) {
       mapping.request.headers = this.headers

@@ -5,6 +5,16 @@ module.exports = class HttpAdminInterface {
     this.uri = `http://${host}:${port}/__admin`
   }
 
+  resetAll () {
+    return rp({
+      method: 'POST',
+      url: `${this.uri}/reset`
+    })
+  }
+
+  /*
+   * MAPPINGS
+   */
   createMapping (mapping) {
     return rp({
       method: 'POST',
@@ -18,6 +28,34 @@ module.exports = class HttpAdminInterface {
     return rp({
       method: 'POST',
       url: `${this.uri}/mappings/reset`
+    })
+  }
+
+  /*
+   * REQUESTS
+   */
+  findRequestsMatching (requestPattern) {
+    return rp({
+      method: 'POST',
+      url: `${this.uri}/requests/find`,
+      body: requestPattern,
+      json: true
+    })
+  }
+
+  countRequestsMatching (requestPattern) {
+    return rp({
+      method: 'POST',
+      url: `${this.uri}/requests/count`,
+      body: requestPattern,
+      json: true
+    })
+  }
+
+  resetRequests () {
+    return rp({
+      method: 'POST',
+      url: `${this.uri}/requests/reset`
     })
   }
 }

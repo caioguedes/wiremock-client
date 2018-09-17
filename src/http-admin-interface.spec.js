@@ -26,6 +26,17 @@ describe('HttpAdminInterface', () => {
       admin = new HttpAdminInterface('localhost', 8080)
     })
 
+    it('should have a method for resetting all the things', () => {
+      admin.resetAll()
+      expect(rpSpy).toHaveBeenCalledWith({
+        method: 'POST',
+        url: 'http://localhost:8080/__admin/reset'
+      })
+    })
+
+    /*
+     * MAPPINGS
+     */
     it('should have a method for creating mappings', () => {
       const mapping = { test: 'mapping' }
       admin.createMapping(mapping)
@@ -42,6 +53,39 @@ describe('HttpAdminInterface', () => {
       expect(rpSpy).toHaveBeenCalledWith({
         method: 'POST',
         url: `http://localhost:8080/__admin/mappings/reset`
+      })
+    })
+
+    /*
+     * REQUESTS
+     */
+    it('should have a method for finding requests', () => {
+      let requestMatcher = 'requestMatcher'
+      admin.findRequestsMatching(requestMatcher)
+      expect(rpSpy).toHaveBeenCalledWith({
+        method: 'POST',
+        url: `http://localhost:8080/__admin/requests/find`,
+        body: requestMatcher,
+        json: true
+      })
+    })
+
+    it('should have a method for counting matching requests', () => {
+      let requestMatcher = 'requestMatcher'
+      admin.countRequestsMatching(requestMatcher)
+      expect(rpSpy).toHaveBeenCalledWith({
+        method: 'POST',
+        url: `http://localhost:8080/__admin/requests/count`,
+        body: requestMatcher,
+        json: true
+      })
+    })
+
+    it('should have a method for resetting requests', () => {
+      admin.resetRequests()
+      expect(rpSpy).toHaveBeenCalledWith({
+        method: 'POST',
+        url: `http://localhost:8080/__admin/requests/reset`
       })
     })
   })

@@ -9,31 +9,38 @@ A node client for interfacing with WireMock's admin API
 
 **WARNING: THIS LIBRARY CURRENTLY EXPERIMENTAL AND IN A PRE-ALPHA STATE**
 
-### Example
+### Node Example
 ```javascript
-const {
-  aResponse,
-  containsPattern,
-  post,
-  urlPathMatching,
-  WireMock,
-  equalTo
-} = require('wiremock-client')
+const {Builders, Matchers, connect} = require('wiremock-client')
 
-const wireMock = new WireMock('localhost', 8080)
-wireMock.resetMappings().then(() => wireMock.register(
-     post(urlPathMatching("/api/example"))
-       .withRequestBody(containsPattern("token=auth"))
-       .willReturn(
-         aResponse()
-           .withStatus(200)
-           .withHeader('Content-Type', equalTo('application/json'))
-           .withBody({test: true})
-       )
-   )
+const mock = connect('localhost', 8080)
+mock.register(Builders.post(Matchers.urlPathMatching("/api/example"))
+  .withRequestBody(Matchers.containsPattern("token=auth"))
+  .willReturn(Builders.aResponse()
+    .withStatus(200)
+    .withHeader('Content-Type', Matchers.equalTo('application/json'))
+    .withBody({test: true})
+  )
 )
+```
 
+### Browser Example
+```html
+```
 
+```javascript
+const Builders =  WireMock.Builders
+const Matchers =  WireMock.Matchers
+
+const mock = WireMock.connect('localhost', 8080)
+mock.register(Builders.post( WireMock.Matchers.urlPathMatching("/api/example"))
+  .withRequestBody(Matchers.containsPattern("token=auth"))
+  .willReturn(Builders.aResponse()
+    .withStatus(200)
+    .withHeader('Content-Type',  WireMock.Matchers.equalTo('application/json'))
+    .withBody({test: true})
+  )
+)
 ```
 
 ## Features

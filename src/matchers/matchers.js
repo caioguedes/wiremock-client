@@ -1,46 +1,60 @@
 module.exports = {
 
-  containsPattern (pattern) {
+  absent (absent) {
+    return { absent }
+  },
+
+  binaryEqualTo (binaryEqualTo) {
+    return { binaryEqualTo }
+  },
+
+  containing (contains) {
+    return { contains }
+  },
+
+  equalTo (equalTo) {
+    return { equalTo }
+  },
+
+  equalToIgnoreCase (equalTo) {
     return {
-      contains: pattern
+      equalTo,
+      caseInsensitive: true
     }
   },
 
-  equalTo (value) {
-    return {
-      equalTo: value
+  equalToJson (equalToJson, ignoreArrayOrder, ignoreExtraElements) {
+    let matcher = { equalToJson }
+
+    if (ignoreArrayOrder) {
+      matcher.ignoreArrayOrder = true
     }
+
+    if (ignoreExtraElements) {
+      matcher.ignoreExtraElements = true
+    }
+
+    return matcher
   },
 
-  /*
-   * URL
-   */
-  urlMatching (url) {
-    return {
-      key: 'url',
-      value: url
-    }
+  equalToXml (equalToXml) {
+    return { equalToXml }
   },
 
-  urlPattern (pattern) {
-    return {
-      key: 'urlPattern',
-      value: pattern
-    }
+  matchesJsonPath (matchesJsonPath) {
+    return { matchesJsonPath }
   },
 
-  urlPathMatching (path) {
-    return {
-      key: 'urlPath',
-      value: path
-    }
+  matchingXPath (matchingXPath) {
+    return { matchingXPath }
   },
 
-  urlPathPattern (pattern) {
-    return {
-      key: 'urlPathPattern',
-      value: pattern
-    }
+  matches (matches) {
+    return { matches }
+  },
+
+  notMatching (doesNotMatch) {
+    return { doesNotMatch }
   }
 
 }
