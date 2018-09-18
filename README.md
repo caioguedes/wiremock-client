@@ -14,8 +14,8 @@ A node client for interfacing with Connect's admin API
 const {Builders, Matchers, connect} = require('wiremock-client')
 
 const mock = connect('localhost', 8080)
-mock.register(Builders.post(Matchers.urlPathMatching("/api/example"))
-  .withRequestBody(Matchers.containsPattern("token=auth"))
+mock.register(Builders.post(Matchers.urlPathMatching('/api/example'))
+  .withRequestBody(Matchers.containsPattern('token=auth'))
   .willReturn(Builders.aResponse()
     .withStatus(200)
     .withHeader('Content-Type', Matchers.equalTo('application/json'))
@@ -34,8 +34,8 @@ const Builders =  WireMock.Builders
 const Matchers =  WireMock.Matchers
 
 const mock = WireMock.connect('localhost', 8080)
-mock.register(Builders.post(Matchers.urlPathMatching("/api/example"))
-  .withRequestBody(Matchers.containsPattern("token=auth"))
+mock.register(Builders.post(Matchers.urlPathMatching('/api/example'))
+  .withRequestBody(Matchers.containsPattern('token=auth'))
   .willReturn(Builders.aResponse()
     .withStatus(200)
     .withHeader('Content-Type', Matchers.equalTo('application/json'))
