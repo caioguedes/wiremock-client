@@ -26,6 +26,7 @@ mock.register(Builders.post(Matchers.urlPathMatching("/api/example"))
 
 ### Browser Example
 ```html
+<script src="wiremock-client.js"></script>
 ```
 
 ```javascript
@@ -33,11 +34,11 @@ const Builders =  WireMock.Builders
 const Matchers =  WireMock.Matchers
 
 const mock = WireMock.connect('localhost', 8080)
-mock.register(Builders.post( WireMock.Matchers.urlPathMatching("/api/example"))
+mock.register(Builders.post(Matchers.urlPathMatching("/api/example"))
   .withRequestBody(Matchers.containsPattern("token=auth"))
   .willReturn(Builders.aResponse()
     .withStatus(200)
-    .withHeader('Content-Type',  WireMock.Matchers.equalTo('application/json'))
+    .withHeader('Content-Type', Matchers.equalTo('application/json'))
     .withBody({test: true})
   )
 )
