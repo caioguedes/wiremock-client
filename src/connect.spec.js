@@ -19,7 +19,7 @@ describe('WireMock', () => {
     ])
     adminConstructorSpy.and.returnValue(adminSpy)
 
-    WireMock = rewire('./wire-mock.js')
+    WireMock = rewire('./connect.js')
     WireMock.__set__({
       HttpAdminInterface: adminConstructorSpy
     })
@@ -27,24 +27,21 @@ describe('WireMock', () => {
 
   describe('constructor', () => {
     it('should create admin interface with default host and port when neither is provided', () => {
-      const wireMock = new WireMock()
+      WireMock()
       expect(adminConstructorSpy).toHaveBeenCalledWith('localhost', 8080)
-      expect(wireMock.admin).toEqual(adminSpy)
     })
 
     it('should create admin interface with default port when only host is provided', () => {
       const host = 'non_default_localhost'
-      const wireMock = new WireMock(host)
+      new WireMock(host)
       expect(adminConstructorSpy).toHaveBeenCalledWith(host, 8080)
-      expect(wireMock.admin).toEqual(adminSpy)
     })
 
     it('should create admin interface with the provided host and port', () => {
       const host = 'non_default_localhost'
       const port = 1234
-      const wireMock = new WireMock(host, port)
+      new WireMock(host, port)
       expect(adminConstructorSpy).toHaveBeenCalledWith(host, port)
-      expect(wireMock.admin).toEqual(adminSpy)
     })
   })
 
