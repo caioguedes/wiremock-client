@@ -33,14 +33,14 @@ describe('WireMock', () => {
 
     it('should create admin interface with default port when only host is provided', () => {
       const host = 'non_default_localhost'
-      new WireMock(host)
+      WireMock(host)
       expect(adminConstructorSpy).toHaveBeenCalledWith(host, 8080)
     })
 
     it('should create admin interface with the provided host and port', () => {
       const host = 'non_default_localhost'
       const port = 1234
-      new WireMock(host, port)
+      WireMock(host, port)
       expect(adminConstructorSpy).toHaveBeenCalledWith(host, port)
     })
   })
@@ -137,7 +137,7 @@ describe('WireMock', () => {
       const builder = new RequestPatternBuilder()
       let buildResult = 'builtRequestPattern'
       let buildSpy = spyOn(builder, 'build').and.returnValue(buildResult)
-      adminSpy.findRequestsMatching.and.returnValue(Promise.resolve({requests: [{}]}))
+      adminSpy.findRequestsMatching.and.returnValue(Promise.resolve({ requests: [{}] }))
       let countMatcherSpy = jasmine.createSpy('countMatcher')
       countMatcherSpy.and.returnValue(true)
       wireMock.verifyThat(builder, countMatcherSpy).then(result => {
@@ -151,7 +151,7 @@ describe('WireMock', () => {
 
     it('should have a method for verifying requests with a request pattern object', done => {
       const requestPattern = {}
-      adminSpy.findRequestsMatching.and.returnValue(Promise.resolve({requests: [{}]}))
+      adminSpy.findRequestsMatching.and.returnValue(Promise.resolve({ requests: [{}] }))
       let countMatcherSpy = jasmine.createSpy('countMatcher')
       countMatcherSpy.and.returnValue(true)
       wireMock.verifyThat(requestPattern, countMatcherSpy).then(result => {
@@ -166,8 +166,5 @@ describe('WireMock', () => {
       wireMock.resetRequests()
       expect(adminSpy.resetRequests).toHaveBeenCalledWith()
     })
-
   })
-
-
 })

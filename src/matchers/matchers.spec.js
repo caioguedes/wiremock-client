@@ -3,22 +3,22 @@ const Matchers = require('./matchers')
 describe('Matchers', () => {
   it('absent()', () => {
     const absent = 'absent'
-    expect(Matchers.absent(absent)).toEqual({absent})
+    expect(Matchers.absent(absent)).toEqual({ absent })
   })
 
   it('containsPattern()', () => {
     const binaryEqualTo = 'binaryEqualTo'
-    expect(Matchers.binaryEqualTo(binaryEqualTo)).toEqual({binaryEqualTo})
+    expect(Matchers.binaryEqualTo(binaryEqualTo)).toEqual({ binaryEqualTo })
   })
 
   it('containsPattern()', () => {
     const contains = 'contains'
-    expect(Matchers.containing(contains)).toEqual({contains})
+    expect(Matchers.containing(contains)).toEqual({ contains })
   })
 
   it('equalTo()', () => {
     const equalTo = 'equalTo'
-    expect(Matchers.equalTo(equalTo)).toEqual({equalTo})
+    expect(Matchers.equalTo(equalTo)).toEqual({ equalTo })
   })
 
   it('equalToIgnoreCase()', () => {
@@ -30,7 +30,6 @@ describe('Matchers', () => {
   })
 
   describe('equalToJson', () => {
-
     it('equalToJson() no options', () => {
       const equalToJson = 'equalToJson'
       expect(Matchers.equalToJson(equalToJson)).toEqual({
@@ -57,26 +56,26 @@ describe('Matchers', () => {
 
   it('equalToXml()', () => {
     const equalToXml = 'equalToXml'
-    expect(Matchers.equalToXml(equalToXml)).toEqual({equalToXml})
+    expect(Matchers.equalToXml(equalToXml)).toEqual({ equalToXml })
   })
 
   it('matchesJsonPath()', () => {
     const matchesJsonPath = 'matchesJsonPath'
-    expect(Matchers.matchesJsonPath(matchesJsonPath)).toEqual({matchesJsonPath})
+    expect(Matchers.matchesJsonPath(matchesJsonPath)).toEqual({ matchesJsonPath })
   })
 
   it('matchingXPath()', () => {
     const matchingXPath = 'matchingXPath'
-    expect(Matchers.matchingXPath(matchingXPath)).toEqual({matchingXPath})
+    expect(Matchers.matchingXPath(matchingXPath)).toEqual({ matchingXPath })
   })
 
   it('matches()', () => {
     const matches = 'matches'
-    expect(Matchers.matches(matches)).toEqual({matches})
+    expect(Matchers.matches(matches)).toEqual({ matches })
   })
 
   it('notMatching()', () => {
     const doesNotMatch = 'equalToXml'
-    expect(Matchers.notMatching(doesNotMatch)).toEqual({doesNotMatch})
+    expect(Matchers.notMatching(doesNotMatch)).toEqual({ doesNotMatch })
   })
 })

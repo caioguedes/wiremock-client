@@ -6,11 +6,10 @@ const { moreThanOrExactly } = require('./matchers')
 const DEFAULT_PORT = 8080
 const DEFAULT_HOST = 'localhost'
 
-module.exports = function connect(host, port) {
-
+module.exports = function connect (host, port) {
   const admin = new HttpAdminInterface(host || DEFAULT_HOST, port || DEFAULT_PORT)
 
-  return  {
+  return {
     // POST /reset
     resetAll () {
       return admin.resetAll()

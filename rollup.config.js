@@ -6,7 +6,7 @@ import pkg from './package.json'
 import resolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
 
-function output(file, format) {
+function output (file, format) {
   return {
     exports: 'named',
     name: 'WireMock',
@@ -21,7 +21,7 @@ module.exports = [
     output: output(pkg.browser, 'umd'),
     plugins: [
       babel(),
-      resolve({jsnext: true, preferBuiltins: true, browser: true}),
+      resolve({ jsnext: true, preferBuiltins: true, browser: true }),
       json(),
       commonjs(),
       minify({
@@ -41,8 +41,8 @@ module.exports = [
     ],
     plugins: [
       babel(),
-      resolve({jsnext: true, main: true}),
-      commonjs(),
+      resolve({ jsnext: true, main: true }),
+      commonjs()
     ]
   }
 ]

@@ -1,4 +1,4 @@
-function notNumeric(val) {
+function notNumeric (val) {
   return typeof val !== 'number' || Number.isNaN(val)
 }
 

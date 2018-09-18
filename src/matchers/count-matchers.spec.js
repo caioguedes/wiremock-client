@@ -1,7 +1,6 @@
 const Matchers = require('./count-matchers')
 
 describe('Count Matchers', () => {
-
   it('lessThan()', () => {
     let comparator = Matchers.lessThan(10)
     expect(comparator(Number.MIN_VALUE)).toBeTruthy()
@@ -61,5 +60,4 @@ describe('Count Matchers', () => {
     expect(comparator()).toBeFalsy()
     expect(comparator(null)).toBeFalsy()
   })
-
 })

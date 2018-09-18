@@ -49,7 +49,7 @@ describe('RequestPatternBuilder', () => {
     const builder = new RequestPatternBuilder()
     expect(builder.withoutHeader(key, value) instanceof RequestPatternBuilder).toBeTruthy()
     expect(builder.headers).toEqual({
-      key: {absent: undefined}
+      key: { absent: undefined }
     })
   })
 
@@ -116,6 +116,5 @@ describe('RequestPatternBuilder', () => {
     it('should set body patterns', () => {
       expect(builder.withRequestBody('bodyPattern').build().bodyPatterns).toEqual([ 'bodyPattern' ])
     })
-
   })
 })
