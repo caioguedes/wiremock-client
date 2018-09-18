@@ -13,6 +13,9 @@ describe('WireMock', () => {
     adminSpy = jasmine.createSpyObj('admin', [
       'createMapping',
       'findRequestsMatching',
+      'getStubMapping',
+      'listAllStubMappings',
+      'listAllRequests',
       'resetAll',
       'resetMappings',
       'resetRequests'
@@ -66,6 +69,29 @@ describe('WireMock', () => {
     /*
      * MAPPINGS
      */
+    // allStubMappings
+    it('should have a method for getting all stub mappings', done => {
+      let resolve = 'resolve'
+      adminSpy.listAllStubMappings.and.returnValue(Promise.resolve(resolve))
+      wireMock.allStubMappings().then(result => {
+        expect(result).toEqual(resolve)
+        expect(adminSpy.listAllStubMappings).toHaveBeenCalledWith()
+        done()
+      })
+    })
+
+    // getStubMapping
+    it('should have a method for getting a single stub mapping by uuid', done => {
+      let resolve = 'resolve'
+      let uuid = 'uuid'
+      adminSpy.getStubMapping.and.returnValue(Promise.resolve(resolve))
+      wireMock.getStubMapping(uuid).then(result => {
+        expect(result).toEqual(resolve)
+        expect(adminSpy.getStubMapping).toHaveBeenCalledWith(uuid)
+        done()
+      })
+    })
+
     // register
     it('should have a method for registering mappings using a mapping builder', done => {
       let resolve = 'resolve'
@@ -106,6 +132,17 @@ describe('WireMock', () => {
     /*
     * REQUESTS
     */
+    // allRequests
+    it('should have a method for getting all requests', done => {
+      let resolve = 'resolve'
+      adminSpy.listAllRequests.and.returnValue(Promise.resolve(resolve))
+      wireMock.allRequests().then(result => {
+        expect(result).toEqual(resolve)
+        expect(adminSpy.listAllRequests).toHaveBeenCalledWith()
+        done()
+      })
+    })
+
     // find
     it('should have a method for finding requests using a request pattern builder', done => {
       let resolve = 'resolve'

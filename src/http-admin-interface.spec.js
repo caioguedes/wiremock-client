@@ -37,12 +37,29 @@ describe('HttpAdminInterface', () => {
     /*
      * MAPPINGS
      */
+    it('should have a method for getting all stub mappings', () => {
+      admin.listAllStubMappings()
+      expect(axiosSpy).toHaveBeenCalledWith({
+        method: 'get',
+        url: 'http://localhost:8080/__admin/mappings',
+      })
+    })
+
+    it('should have a method for getting a single stub mapping', () => {
+      let uuid = 'uuid'
+      admin.getStubMapping(uuid)
+      expect(axiosSpy).toHaveBeenCalledWith({
+        method: 'get',
+        url: `http://localhost:8080/__admin/mappings/${uuid}`,
+      })
+    })
+
     it('should have a method for creating mappings', () => {
       const mapping = { test: 'mapping' }
       admin.createMapping(mapping)
       expect(axiosSpy).toHaveBeenCalledWith({
         method: 'post',
-        url: `http://localhost:8080/__admin/mappings`,
+        url: 'http://localhost:8080/__admin/mappings',
         data: mapping
       })
     })
@@ -51,7 +68,7 @@ describe('HttpAdminInterface', () => {
       admin.resetMappings()
       expect(axiosSpy).toHaveBeenCalledWith({
         method: 'post',
-        url: `http://localhost:8080/__admin/mappings/reset`
+        url: 'http://localhost:8080/__admin/mappings/reset'
       })
     })
 
@@ -63,7 +80,7 @@ describe('HttpAdminInterface', () => {
       admin.findRequestsMatching(requestMatcher)
       expect(axiosSpy).toHaveBeenCalledWith({
         method: 'post',
-        url: `http://localhost:8080/__admin/requests/find`,
+        url: 'http://localhost:8080/__admin/requests/find',
         data: requestMatcher
       })
     })
@@ -73,7 +90,7 @@ describe('HttpAdminInterface', () => {
       admin.countRequestsMatching(requestMatcher)
       expect(axiosSpy).toHaveBeenCalledWith({
         method: 'post',
-        url: `http://localhost:8080/__admin/requests/count`,
+        url: 'http://localhost:8080/__admin/requests/count',
         data: requestMatcher
       })
     })
@@ -82,7 +99,7 @@ describe('HttpAdminInterface', () => {
       admin.resetRequests()
       expect(axiosSpy).toHaveBeenCalledWith({
         method: 'post',
-        url: `http://localhost:8080/__admin/requests/reset`
+        url: 'http://localhost:8080/__admin/requests/reset'
       })
     })
   })

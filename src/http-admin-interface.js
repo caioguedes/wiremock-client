@@ -23,6 +23,20 @@ module.exports = class HttpAdminInterface {
     })
   }
 
+  getStubMapping (uuid) {
+    return axios({
+      method: 'get',
+      url: `${this.uri}/mappings/${uuid}`,
+    })
+  }
+
+  listAllStubMappings () {
+    return axios({
+      method: 'get',
+      url: `${this.uri}/mappings`,
+    })
+  }
+
   resetMappings () {
     return axios({
       method: 'post',
@@ -33,6 +47,14 @@ module.exports = class HttpAdminInterface {
   /*
    * REQUESTS
    */
+  countRequestsMatching (requestPattern) {
+    return axios({
+      method: 'post',
+      url: `${this.uri}/requests/count`,
+      data: requestPattern
+    })
+  }
+
   findRequestsMatching (requestPattern) {
     return axios({
       method: 'post',
@@ -41,11 +63,10 @@ module.exports = class HttpAdminInterface {
     })
   }
 
-  countRequestsMatching (requestPattern) {
+  listAllRequests () {
     return axios({
-      method: 'post',
-      url: `${this.uri}/requests/count`,
-      data: requestPattern
+      method: 'get',
+      url: `${this.uri}/requests`
     })
   }
 

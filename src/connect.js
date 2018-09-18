@@ -18,7 +18,16 @@ module.exports = function connect (host, port) {
     /*
      * MAPPINGS
      */
-    // POST /mapping
+    // GET /mappings
+    allStubMappings () {
+      return admin.listAllStubMappings()
+    },
+
+    getStubMapping (uuid) {
+      return admin.getStubMapping(uuid)
+    },
+
+    // POST /mappings
     register (mappingBuilder) {
       if (mappingBuilder instanceof MappingBuilder) {
         return admin.createMapping(mappingBuilder.build())
@@ -26,7 +35,7 @@ module.exports = function connect (host, port) {
       return admin.createMapping(mappingBuilder)
     },
 
-    // POST /mapping/reset
+    // POST /mappings/reset
     resetMappings () {
       return admin.resetMappings()
     },
@@ -34,6 +43,10 @@ module.exports = function connect (host, port) {
     /*
      * REQUESTS
      */
+    allRequests () {
+      return admin.listAllRequests()
+    },
+
     find (requestBuilder) {
       if (requestBuilder instanceof RequestPatternBuilder) {
         return admin.findRequestsMatching(requestBuilder.build())
