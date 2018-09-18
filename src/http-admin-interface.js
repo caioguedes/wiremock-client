@@ -1,4 +1,4 @@
-const rp = require('request-promise')
+const axios = require('axios')
 
 module.exports = class HttpAdminInterface {
   constructor (host, port) {
@@ -6,8 +6,8 @@ module.exports = class HttpAdminInterface {
   }
 
   resetAll () {
-    return rp({
-      method: 'POST',
+    return axios({
+      method: 'post',
       url: `${this.uri}/reset`
     })
   }
@@ -16,17 +16,16 @@ module.exports = class HttpAdminInterface {
    * MAPPINGS
    */
   createMapping (mapping) {
-    return rp({
-      method: 'POST',
+    return axios({
+      method: 'post',
       url: `${this.uri}/mappings`,
-      body: mapping,
-      json: true
+      data: mapping
     })
   }
 
   resetMappings () {
-    return rp({
-      method: 'POST',
+    return axios({
+      method: 'post',
       url: `${this.uri}/mappings/reset`
     })
   }
@@ -35,26 +34,24 @@ module.exports = class HttpAdminInterface {
    * REQUESTS
    */
   findRequestsMatching (requestPattern) {
-    return rp({
-      method: 'POST',
+    return axios({
+      method: 'post',
       url: `${this.uri}/requests/find`,
-      body: requestPattern,
-      json: true
+      data: requestPattern
     })
   }
 
   countRequestsMatching (requestPattern) {
-    return rp({
-      method: 'POST',
+    return axios({
+      method: 'post',
       url: `${this.uri}/requests/count`,
-      body: requestPattern,
-      json: true
+      data: requestPattern
     })
   }
 
   resetRequests () {
-    return rp({
-      method: 'POST',
+    return axios({
+      method: 'post',
       url: `${this.uri}/requests/reset`
     })
   }
