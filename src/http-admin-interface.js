@@ -1,79 +1,83 @@
 const axios = require('axios')
 
+function handleResponse(promise) {
+  return promise.then(res => res.data)
+}
+
 module.exports = class HttpAdminInterface {
   constructor (host, port) {
     this.uri = `http://${host}:${port}/__admin`
   }
 
   resetAll () {
-    return axios({
+    return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/reset`
-    })
+    }))
   }
 
   /*
    * MAPPINGS
    */
   createMapping (mapping) {
-    return axios({
+    return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/mappings`,
       data: mapping
-    })
+    }))
   }
 
   getStubMapping (uuid) {
-    return axios({
+    return handleResponse(axios({
       method: 'get',
       url: `${this.uri}/mappings/${uuid}`,
-    })
+    }))
   }
 
   listAllStubMappings () {
-    return axios({
+    return handleResponse(axios({
       method: 'get',
       url: `${this.uri}/mappings`,
-    })
+    }))
   }
 
   resetMappings () {
-    return axios({
+    return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/mappings/reset`
-    })
+    }))
   }
 
   /*
    * REQUESTS
    */
   countRequestsMatching (requestPattern) {
-    return axios({
+    return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/requests/count`,
       data: requestPattern
-    })
+    }))
   }
 
   findRequestsMatching (requestPattern) {
-    return axios({
+    return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/requests/find`,
       data: requestPattern
-    })
+    }))
   }
 
   listAllRequests () {
-    return axios({
+    return handleResponse(axios({
       method: 'get',
       url: `${this.uri}/requests`
-    })
+    }))
   }
 
   resetRequests () {
-    return axios({
+    return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/requests/reset`
-    })
+    }))
   }
 }
