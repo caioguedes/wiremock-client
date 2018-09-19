@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-function handleResponse(promise) {
+function handleResponse (promise) {
   return promise.then(res => res.data)
 }
 
@@ -30,14 +30,14 @@ module.exports = class HttpAdminInterface {
   getStubMapping (uuid) {
     return handleResponse(axios({
       method: 'get',
-      url: `${this.uri}/mappings/${uuid}`,
+      url: `${this.uri}/mappings/${uuid}`
     }))
   }
 
   listAllStubMappings () {
     return handleResponse(axios({
       method: 'get',
-      url: `${this.uri}/mappings`,
+      url: `${this.uri}/mappings`
     }))
   }
 

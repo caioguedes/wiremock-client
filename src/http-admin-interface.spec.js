@@ -50,7 +50,7 @@ describe('HttpAdminInterface', () => {
         expect(res).toEqual(response)
         expect(axiosSpy).toHaveBeenCalledWith({
           method: 'get',
-          url: 'http://localhost:8080/__admin/mappings',
+          url: 'http://localhost:8080/__admin/mappings'
         })
         done()
       })
@@ -62,7 +62,7 @@ describe('HttpAdminInterface', () => {
         expect(res).toEqual(response)
         expect(axiosSpy).toHaveBeenCalledWith({
           method: 'get',
-          url: `http://localhost:8080/__admin/mappings/${uuid}`,
+          url: `http://localhost:8080/__admin/mappings/${uuid}`
         })
         done()
       })
