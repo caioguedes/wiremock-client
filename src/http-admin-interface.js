@@ -9,6 +9,12 @@ module.exports = class HttpAdminInterface {
     this.uri = `http://${host}:${port}/__admin`
   }
 
+  healthcheck() {
+    return this.getRecordingStatus()
+      .then(() => true)
+      .catch(() => false)
+  }
+
   resetAll () {
     return handleResponse(axios({
       method: 'post',
@@ -78,6 +84,16 @@ module.exports = class HttpAdminInterface {
     return handleResponse(axios({
       method: 'post',
       url: `${this.uri}/requests/reset`
+    }))
+  }
+
+  /*
+   * RECORDINGS
+   */
+  getRecordingStatus () {
+    return handleResponse(axios({
+      method: 'get',
+      url: `${this.uri}/recordings/status`
     }))
   }
 }

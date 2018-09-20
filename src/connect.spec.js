@@ -13,7 +13,9 @@ describe('WireMock', () => {
     adminSpy = jasmine.createSpyObj('admin', [
       'createMapping',
       'findRequestsMatching',
+      'getRecordingStatus',
       'getStubMapping',
+      'healthcheck',
       'listAllStubMappings',
       'listAllRequests',
       'resetAll',
@@ -53,6 +55,17 @@ describe('WireMock', () => {
 
     beforeEach(() => {
       wireMock = new WireMock()
+    })
+
+    // healthcheck()
+    it('should have a method for checking the health of a mock', done => {
+      let resolve = 'resolve'
+      adminSpy.healthcheck.and.returnValue(Promise.resolve(resolve))
+      wireMock.healthcheck().then(result => {
+        expect(result).toEqual(resolve)
+        expect(adminSpy.healthcheck).toHaveBeenCalledWith()
+        done()
+      })
     })
 
     // resetAll()
@@ -202,6 +215,20 @@ describe('WireMock', () => {
     it('should have a method for resetting mappings', () => {
       wireMock.resetRequests()
       expect(adminSpy.resetRequests).toHaveBeenCalledWith()
+    })
+
+    /*
+     * RECORDINGS
+     */
+    // getRecordingStatus
+    it('should have a method getting the recording status', done => {
+      let resolve = 'resolve'
+      adminSpy.getRecordingStatus.and.returnValue(Promise.resolve(resolve))
+      wireMock.recordingStatus().then(result => {
+        expect(result).toEqual(resolve)
+        expect(adminSpy.getRecordingStatus).toHaveBeenCalledWith()
+        done()
+      })
     })
   })
 })

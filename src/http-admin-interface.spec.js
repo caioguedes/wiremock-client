@@ -42,6 +42,29 @@ describe('HttpAdminInterface', () => {
       })
     })
 
+    it('should have a method for checking if the server is up', done => {
+      admin.healthcheck().then(res => {
+        expect(res).toEqual(true)
+        expect(axiosSpy).toHaveBeenCalledWith({
+          method: 'get',
+          url: 'http://localhost:8080/__admin/recordings/status'
+        })
+        done()
+      })
+    })
+
+    it('should have a method for checking if the server is up', done => {
+      axiosSpy.and.returnValue(Promise.reject({}))
+      admin.healthcheck().then(res => {
+        expect(res).toEqual(false)
+        expect(axiosSpy).toHaveBeenCalledWith({
+          method: 'get',
+          url: 'http://localhost:8080/__admin/recordings/status'
+        })
+        done()
+      })
+    })
+
     /*
      * MAPPINGS
      */
@@ -121,12 +144,37 @@ describe('HttpAdminInterface', () => {
       })
     })
 
+    it('should have a method for getting all requests', done => {
+      admin.listAllRequests().then(res => {
+        expect(res).toEqual(response)
+        expect(axiosSpy).toHaveBeenCalledWith({
+          method: 'get',
+          url: 'http://localhost:8080/__admin/requests',
+        })
+        done()
+      })
+    })
+
     it('should have a method for resetting requests', done => {
       admin.resetRequests().then(res => {
         expect(res).toEqual(response)
         expect(axiosSpy).toHaveBeenCalledWith({
           method: 'post',
           url: 'http://localhost:8080/__admin/requests/reset'
+        })
+        done()
+      })
+    })
+
+    /*
+     * RECORDINGS
+     */
+    it('should have a method for getting the recording status', done => {
+      admin.getRecordingStatus().then(res => {
+        expect(res).toEqual(response)
+        expect(axiosSpy).toHaveBeenCalledWith({
+          method: 'get',
+          url: 'http://localhost:8080/__admin/recordings/status'
         })
         done()
       })

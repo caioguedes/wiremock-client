@@ -10,6 +10,10 @@ module.exports = function connect (host, port) {
   const admin = new HttpAdminInterface(host || DEFAULT_HOST, port || DEFAULT_PORT)
 
   return {
+    healthcheck() {
+      return admin.healthcheck()
+    },
+
     // POST /reset
     resetAll () {
       return admin.resetAll()
@@ -68,6 +72,13 @@ module.exports = function connect (host, port) {
     // POST /requests/reset
     resetRequests () {
       return admin.resetRequests()
+    },
+
+    /*
+     * RECORDINGS
+     */
+    recordingStatus() {
+      return admin.getRecordingStatus()
     }
   }
 }
