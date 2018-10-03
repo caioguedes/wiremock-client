@@ -19,7 +19,7 @@ describe('HttpAdminInterface', () => {
 
   describe('constructor', () => {
     it('should build a uri from the hostname and port', () => {
-      const admin = new HttpAdminInterface('localhost', 8080)
+      const admin = new HttpAdminInterface('http', 'localhost', 8080)
       expect(admin.uri).toEqual('http://localhost:8080/__admin')
     })
   })
@@ -28,7 +28,7 @@ describe('HttpAdminInterface', () => {
     let admin
 
     beforeEach(() => {
-      admin = new HttpAdminInterface('localhost', 8080)
+      admin = new HttpAdminInterface('http', 'localhost', 8080)
     })
 
     it('should have a method for resetting all the things', done => {
@@ -54,7 +54,7 @@ describe('HttpAdminInterface', () => {
     })
 
     it('should have a method for checking if the server is up', done => {
-      axiosSpy.and.returnValue(Promise.reject({}))
+      axiosSpy.and.returnValue(Promise.reject(new Error()))
       admin.healthcheck().then(res => {
         expect(res).toEqual(false)
         expect(axiosSpy).toHaveBeenCalledWith({
@@ -149,7 +149,7 @@ describe('HttpAdminInterface', () => {
         expect(res).toEqual(response)
         expect(axiosSpy).toHaveBeenCalledWith({
           method: 'get',
-          url: 'http://localhost:8080/__admin/requests',
+          url: 'http://localhost:8080/__admin/requests'
         })
         done()
       })

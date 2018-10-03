@@ -33,20 +33,22 @@ describe('WireMock', () => {
   describe('constructor', () => {
     it('should create admin interface with default host and port when neither is provided', () => {
       WireMock()
-      expect(adminConstructorSpy).toHaveBeenCalledWith('localhost', 8080)
+      expect(adminConstructorSpy).toHaveBeenCalledWith('http', 'localhost', 8080)
     })
 
     it('should create admin interface with default port when only host is provided', () => {
+      const https = 'https'
       const host = 'non_default_localhost'
-      WireMock(host)
-      expect(adminConstructorSpy).toHaveBeenCalledWith(host, 8080)
+      WireMock(https, host)
+      expect(adminConstructorSpy).toHaveBeenCalledWith(https, host, 8080)
     })
 
     it('should create admin interface with the provided host and port', () => {
+      const https = 'https'
       const host = 'non_default_localhost'
       const port = 1234
-      WireMock(host, port)
-      expect(adminConstructorSpy).toHaveBeenCalledWith(host, port)
+      WireMock(https, host, port)
+      expect(adminConstructorSpy).toHaveBeenCalledWith(https, host, port)
     })
   })
 

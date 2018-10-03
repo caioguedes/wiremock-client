@@ -9,7 +9,7 @@ module.exports = class HttpAdminInterface {
     this.uri = `${protocol.toLowerCase()}://${host}:${port}/__admin`
   }
 
-  healthcheck() {
+  healthcheck () {
     return this.getRecordingStatus()
       .then(() => true)
       .catch(() => false)

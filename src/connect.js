@@ -11,7 +11,7 @@ module.exports = function connect (protocol, host, port) {
   const admin = new HttpAdminInterface(protocol || DEFAULT_PROTOCOL, host || DEFAULT_HOST, port || DEFAULT_PORT)
 
   return {
-    healthcheck() {
+    healthcheck () {
       return admin.healthcheck()
     },
 
@@ -78,7 +78,7 @@ module.exports = function connect (protocol, host, port) {
     /*
      * RECORDINGS
      */
-    recordingStatus() {
+    recordingStatus () {
       return admin.getRecordingStatus()
     }
   }
