@@ -4,10 +4,11 @@ const RequestPatternBuilder = require('./builders/request-pattern-builder')
 const { moreThanOrExactly } = require('./matchers')
 
 const DEFAULT_PORT = 8080
+const DEFAULT_PROTOCOL = 'http'
 const DEFAULT_HOST = 'localhost'
 
-module.exports = function connect (host, port) {
-  const admin = new HttpAdminInterface(host || DEFAULT_HOST, port || DEFAULT_PORT)
+module.exports = function connect (protocol, host, port) {
+  const admin = new HttpAdminInterface(protocol || DEFAULT_PROTOCOL, host || DEFAULT_HOST, port || DEFAULT_PORT)
 
   return {
     healthcheck() {

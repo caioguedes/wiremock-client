@@ -5,8 +5,8 @@ function handleResponse (promise) {
 }
 
 module.exports = class HttpAdminInterface {
-  constructor (host, port) {
-    this.uri = `http://${host}:${port}/__admin`
+  constructor (protocol, host, port) {
+    this.uri = `${protocol.toLowerCase()}://${host}:${port}/__admin`
   }
 
   healthcheck() {
